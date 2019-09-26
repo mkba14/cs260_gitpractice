@@ -1,0 +1,34 @@
+<html>
+    <!-- 
+    CSS and whatnot
+    -->
+    <head>
+        <!-- Javascript 
+             - Typically better practice to put this @ end of body  -->
+        <script>
+            
+        </script>
+        <script>
+            var done = 1;
+            function ChangeColor(){
+                if(done){
+                    document.body.style.backgroundColor = "lightblue";
+                    done = 0;
+                    console.log("Changing to \"lightblue\"");
+                }
+                else{
+                    document.body.style.backgroundColor = "lavender";
+                    done = 1;
+                    console.log("Changing to \"lavender\"")
+                }
+            }
+                
+        </script>
+    </head>
+    
+    <body onclick="ChangeColor()">
+        <h1> Hello World! </h1>
+
+    </body>
+
+</html>

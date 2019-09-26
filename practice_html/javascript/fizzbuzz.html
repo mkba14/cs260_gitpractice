@@ -1,0 +1,76 @@
+for(let num = 1; num <= 100; num = num + 1){
+   if (num % 3 == 0 && num % 5 == 0){
+     console.log("FizzBuzz")
+   }
+  else if (num % 3 == 0){
+    console.log("Fizz")
+  }
+  else if (num % 5 == 0){
+    console.log("Buzz")
+  }
+  else{
+    console.log(num)
+  }
+}
+
+
+
+
+// Your code here.
+function range(start, stop, step = 1){
+  let vars = [];
+  if(stop > start){
+    for(let i = start; i <= stop; i+=step){
+      vars.push(i);
+    }
+  }
+  else{
+    for(let i = start; i >= stop; i+=step){
+      vars.push(i);
+    }
+  }
+  return vars;
+}
+
+function sum(list){
+  var num = 0;
+  for(let i = 0; i < list.length; i++){
+    num += list[i]
+  }
+  return num
+}
+
+
+console.log(range(1, 10));
+// → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(range(5, 2, -1));
+// → [5, 4, 3, 2]
+console.log(sum(range(1, 10)));
+// → 55
+
+
+//Recursion
+
+function isEven(num){  
+  if(num == 0){
+    return "true";
+  }
+  else if(num == 1){
+    return "false";
+  }
+  else if(num > 1){
+    //console.log(num)
+    return isEven(num - 2);
+  }
+  else if (num < 0){
+    return isEven(num + 2);
+  }
+}
+
+console.log(isEven(0));
+console.log(isEven(50));
+// → true
+console.log(isEven(75));
+// → false
+console.log(isEven(-1));
+// → false

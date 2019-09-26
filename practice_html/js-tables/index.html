@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<h1>Mountains</h1>
+
+<div id="mountains"></div>
+
+<script>
+  const MOUNTAINS = [
+    {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+    {name: "Everest", height: 8848, place: "Nepal"},
+    {name: "Mount Fuji", height: 3776, place: "Japan"},
+    {name: "Vaalserberg", height: 323, place: "Netherlands"},
+    {name: "Denali", height: 6168, place: "United States"},
+    {name: "Popocatepetl", height: 5465, place: "Mexico"},
+    {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+  ];
+
+  // Your code here
+  // Add a table
+  let table = document.createElement('TABLE');
+
+  // Create the header row
+  let row = document.createElement('TR');
+  // Object.keys --> look @ 1st element of MOUNTAINS & retrieve keys....
+  // Another for-loop...
+
+  Object.keys(MOUNTAINS[0]).forEach(function(element) {
+      let headerCell = document.createElement('TH');
+      headerCell.appendChild(document.createTextNode(element));
+      row.appendChild(headerCell);
+  });
+  table.appendChild(row);
+ 
+  MOUNTAINS.forEach(function(element){
+      let row = document.createElement('TR');
+      
+      let nameCell = document.createElement('TD');
+      nameCell.appendChild(document.createTextNode(element.name));
+      row.appendChild(nameCell);
+      
+      let heightCell = document.createElement('TD');
+      heightCell.appendChild(document.createTextNode(element.height));
+      row.appendChild(heightCell);
+      
+      let placeCell = document.createElement('TD');
+      placeCell.appendChild(document.createTextNode(element.place));
+      row.appendChild(placeCell);
+      
+      
+      table.appendChild(row);
+  });
+      
+
+  document.getElementById('mountains').appendChild(table);
+  
+</script>
+<!--
+<table>
+  <tr>
+    <th>name</th>
+    <th>height</th>
+    <th>place</th>
+  </tr>
+  <tr>
+    <td>Kilimanjaro</td>
+    <td>5895</td>
+    <td>Tanzania</td>
+  </tr>
+</table>
+-->
+
+</html>
