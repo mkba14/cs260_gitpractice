@@ -1,0 +1,48 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+     
+<div id="root">
+  <ul>
+    <!-- Loop through each name in names and render it. This will create a set of li elements -->
+
+    <li v-for="name in names">{{name}}</li>
+  </ul>
+  
+  <!-- Let the user enter a new name and bind it to the newName property -->
+    <input type="text" v-model="newName">
+    <!-- Create an event handler for the click event -->
+    <!--Both methods work-->
+    <!--<button v-on:click="addName">Add Name</button>-->
+    <button @click="addName">Add Name</button>
+</div>
+
+
+<!--
+<div id="root">
+  <ul>
+      <!-- This is the same, but we are using the v-text directive instead -->
+<!--
+      <li v-for="name in names" v-text="name"></li>
+  </ul>
+</div>
+<!--
+<div id="root">
+  <ul>
+      <!-- This is the same, but we are using the v-text directive instead -->
+<!--      <li v-for="name in names" v-text="name"></li>
+  </ul>
+</div>
+-->
+        
+        
+        <!--For Vue-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+    <script text="type/javascript" src="script.js">
+            
+        </script>
+
+    </body>
+</html>
