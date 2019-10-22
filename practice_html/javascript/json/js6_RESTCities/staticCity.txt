@@ -1,0 +1,13 @@
+[
+{"city":"Tabiona"},
+{"city":"Talmage"},
+{"city":"Teasdale"},
+{"city":"Thompson"},
+{"city":"Tooele"},
+{"city":"Toquerville"},
+{"city":"Torrey"},
+{"city":"Tremonton"},
+{"city":"Trenton"},
+{"city":"Tridell"},
+{"city":"Tropic"}
+]

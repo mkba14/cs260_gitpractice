@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>City Finder</title>
+    </head>
+    <body>
+        <form>
+            Enter A Utah City: <input type="text" id="cityField" value = ""><br>
+            Suggestion: <span id="txtHint">Empty</span>
+            <input id="weatherButton" type="submit" value = "Submit">
+            
+        </form>
+        <p>City</p>
+        <textarea id="displayCity">No City</textarea>
+        <p>Current Weather</p>
+        <div id="weather"> No weather</div>
+    </body>
+    
+    
+    
+    
+    <script>
+    console.log(document.getElementById("cityField").value);
+    var part = '';
+    if(document.getElementById("cityField") != ''){
+        part = document.getElementById("cityField").value;
+    }
+    else{
+        part = '*';
+    }
+    const url = "http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q="
+    //+ 'H';
+    + part;
+    // const url = "http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q=H";
+               // + document.getElementById("cityField").value;
+
+        fetch(url)
+            .then(function(response) {
+              return response.json();
+              // response comes back
+            }).then(function(json) {	
+              console.log(json);
+              console.log(json[0]);
+              console.log("Got "+json[0].city);
+              
+              
+              var everything;
+                everything = "<ul>";
+                for(let i=0; i < json.length; i++){
+                    everything+="<li>"+json[i].city;
+                };
+                everything += "</ul>";
+                document.getElementById("txtHint").innderHTML=everything;
+                
+            });
+
+    
+        document.getElementById("cityField")
+            .addEventListener("keyup", function(event){
+            event.preventDefault();
+            //alert("Handler for .keyup() called.");
+            document.getElementById("txtHint").innerHTML
+                =document.getElementById("cityField").value;
+            });
+            
+            
+        
+    </script>
+</html>

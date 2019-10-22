@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<title>XKCD</title>
+
+<body>
+
+  <p>Current comic</p>
+  <div id="comic">No comic</div>
+</body>
+
+<script>
+
+  let inner = "";
+  
+  var myurl = "https://cors-anywhere.herokuapp.com";
+  myurl += "/xkcd.com/info.0.json";
+  console.log(myurl);
+  fetch(myurl, {mode: 'cors'})
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json);
+      let img = json["img"].replace("buzzer.", "");
+      inner +='<b><u>' +json["safe_title"]+'</b></u><br><br><img src='+img+' alt="xkcd comic" width="500"><br><br>' + json["alt"];
+      document.getElementById("comic").innerHTML = inner;//json["alt"];
+      
+    });
+</script>
+</html>

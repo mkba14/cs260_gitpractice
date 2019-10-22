@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <script>
+           var mfunc = function(){
+               //What's going on?  This shoudl be fine...
+                //document.getElementById("cityField").addEventListener("keyup", function(event) {
+                    // event.preventDefault();
+    
+
+                var part = document.getElementById("partial").value;
+                console.log("Part = "+part);
+                
+                // Refresh to a list of all possible cities if no input!
+                
+                if(part == ''){
+                    part = '*'; 
+                }
+                
+                const url = "http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q=" + part;
+
+                fetch(url)
+                    .then(function(response) {
+                      return response.json();
+                      // response comes back
+                    }).then(function(json) {	
+                      console.log(json);
+                      console.log(json[0]);
+                      console.log("Got "+json[0].city);
+                      
+                      
+                    var inner = "<ul>";
+                    for(var i = 0; i < json.length; i++){
+                        console.log("city " + json[i].city);
+                        // Calling by element id is IMPT!
+                        inner += "<li>" + json[i].city + "</li>";
+                    }
+                    inner += "</ul>";
+                    console.log("Inner = " + inner);
+                    var suggestions = document.getElementById("suggestions");
+                    //changes the html
+                    suggestions.innerHTML=inner;
+                    });
+
+                
+                
+                
+            };
+        </script>    
+    </head>
+    
+    
+    <body>
+    <h1>Cities</h1>
+    <p>
+        <!-- Here, "partial" is what this element is called s.t. the 
+            function can understand what it's grabbign...-->
+        Enter City: <input type = "text" id = "partial" onkeyup = "mfunc()">
+        <div id="suggestions">Suggested Cities:</div>
+    </p>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+REST interfaces. - REpresentational State Transfer
+API - Apllication Programming Interface --> software communication
+
+
+

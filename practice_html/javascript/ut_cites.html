@@ -1,0 +1,55 @@
+<html>
+    <script>
+
+var cities = ["Alta", "Alpine", "Altamont", "Alton", "Altonah","American Fork", 
+    "Bountiful", "Brigham City","Bryce Canyon City", 
+    "Cedar City","Cottenwood Heights",
+    "Duchesne",  "Eagle Mountain",  "Escalante","Farr West", 
+    "Heber City","Herriman", "Holladay","Hurricane", 
+    "Kanab", "Kaysville", 
+    "Layton", "Lehi", "Logan", 
+    "Midvale", "Millcreek","Moab", "Murray",
+    "North Ogden", 
+    "Ogden", "Orem", 
+    "Panguitch","Park City","Pleasant Grove",  "Promontory","Provo", 
+    "Riverton",   
+    "Salt Lake City", "Sandy", "South Ogden", "South Jordan","Spanish Fork",
+    "Springdale", "Springville","St George","Syracuse",
+    "Taylorsville","Tooele", 
+    "Washington",  "West Jordan",  "West Valley City", "Woods Cross"];
+
+var my_func = function(){
+   var part = document.getElementById("partial").value;
+   var suggestions = document.getElementById("suggestions");
+   var inner = "<ul>";
+   console.log("part = " + part);
+   for (let i = 0; i < cities.length; i++){
+     //if(cities[i].startsWith(part)){
+     if(cities[i].startsWith(part) || cities[i].includes(' ' + part)){
+     inner += "<li>"+cities[i]+"</li>";
+     }
+   }
+   
+   inner += "</ul>";
+   
+   suggestions.innerHTML = inner;
+   
+
+};
+
+
+</script>
+
+<h1>
+Cities
+</h1>
+
+<p>
+Enter City: <input type = "text" id = "partial" onkeyup = "my_func()">
+<div id = "suggestions">
+Suggested Cites: </div>
+</p>
+</div>
+</p>
+</h1>
+</html>

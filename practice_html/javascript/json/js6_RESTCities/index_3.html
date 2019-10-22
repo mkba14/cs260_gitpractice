@@ -1,0 +1,79 @@
+<html>
+    <head>
+        
+    </head>
+    
+    
+    <body>
+    <h1>Cities</h1>
+    <form>
+        <!-- Here, "partial" is what this element is called s.t. the 
+            function can understand what it's grabbign...-->
+        Enter City: <input type = "text" id = "partial" onkeyup = "mfunc()">
+        <div id="suggestions">Suggested Cities:</div>
+    </form>
+    
+    <p>City</p>
+    <textarea id="displayCity">
+        No City
+    </textarea>
+    
+    <p>Current Weather</p>
+    
+    <div id="weather"> 
+        No weather
+    </div>
+    </body>
+    
+    <script>
+           var mfunc = function(){
+               //What's going on?  This shoudl be fine...
+                //document.getElementById("cityField").addEventListener("keyup", function(event) {
+                    // event.preventDefault();
+    
+
+                var part = '';
+                if(document.getElementById("partial") != ''){
+                    part = document.getElementById("partial").value;
+                }
+                else{
+                    part = '*';
+                }
+                console.log("Part = "+part);
+                
+                const url = "http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q=" + part;
+
+                fetch(url)
+                    .then(function(response) {
+                      return response.json();
+                      // response comes back
+                    }).then(function(json) {	
+                      console.log(json);
+                      console.log(json[0]);
+                      console.log("Got "+json[0].city);
+                      
+                      
+                    var inner = "<ul>";
+                    for(let i = 0; i < json.length; i++){
+                        console.log("city " + json[i].city);
+                        // Calling by element id is IMPT!
+                        inner += "<li>" + json[i].city + "</li>";
+                    }
+                    inner += "</ul>";
+                    console.log("Inner = " + inner);
+                    // change the html
+                   document.getElementById("suggestions").innerHTML=inner;
+                });
+
+                document.getElementById("partial")
+                    .addEventListener("keyup", function(event){
+                    event.preventDefault();
+                    //alert("Handler for .keyup() called.");
+                    var suggestion = document.getElementById("suggestions");
+                    suggestion.innerHTML=document.getElementById("partial").value;
+                });
+                
+                
+            };
+        </script>    
+</html>
